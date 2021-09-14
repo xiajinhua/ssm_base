@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.Smdtv2Dao">
+    <resultMap id="BaseResultMap" type="com.ssm.domain.Smdtv2">
+        <id column="SmID" jdbcType="INTEGER" property="smid"/>
+        <result column="SmKey" jdbcType="INTEGER" property="smkey"/>
+        <result column="SmSdriW" jdbcType="FLOAT" property="smsdriw"/>
+        <result column="SmSdriN" jdbcType="FLOAT" property="smsdrin"/>
+        <result column="SmSdriE" jdbcType="FLOAT" property="smsdrie"/>
+        <result column="SmSdriS" jdbcType="FLOAT" property="smsdris"/>
+        <result column="SmGranule" jdbcType="FLOAT" property="smgranule"/>
+        <result column="SmGeometry" jdbcType="OTHER" property="smgeometry"/>
+        <result column="SmUserID" jdbcType="INTEGER" property="smuserid"/>
+        <result column="SmLibTileID" jdbcType="INTEGER" property="smlibtileid"/>
+        <result column="SmArea" jdbcType="FLOAT" property="smarea"/>
+        <result column="SmPerimeter" jdbcType="FLOAT" property="smperimeter"/>
+        <result column="OBJECTID" jdbcType="INTEGER" property="objectid"/>
+        <result column="BSM" jdbcType="INTEGER" property="bsm"/>
+        <result column="SCMJ" jdbcType="FLOAT" property="scmj"/>
+        <result column="FZMJ" jdbcType="FLOAT" property="fzmj"/>
+        <result column="JZRJL" jdbcType="FLOAT" property="jzrjl"/>
+        <result column="JZMD" jdbcType="FLOAT" property="jzmd"/>
+        <result column="SBDJ" jdbcType="FLOAT" property="sbdj"/>
+        <result column="QDJG" jdbcType="FLOAT" property="qdjg"/>
+        <result column="ZDZMJ" jdbcType="FLOAT" property="zdzmj"/>
+        <result column="JZZMJ" jdbcType="FLOAT" property="jzzmj"/>
+        <result column="PZMJ" jdbcType="FLOAT" property="pzmj"/>
+        <result column="JLRQ" jdbcType="TIMESTAMP" property="jlrq"/>
+        <result column="GXRQ" jdbcType="TIMESTAMP" property="gxrq"/>
+        <result column="ZDGD" jdbcType="FLOAT" property="zdgd"/>
+        <result column="Shape_Leng" jdbcType="FLOAT" property="shapeLeng"/>
+        <result column="Shape_Area" jdbcType="FLOAT" property="shapeArea"/>
+        <result column="YSDM1" jdbcType="VARCHAR" property="ysdm1"/>
+        <result column="YSDM" jdbcType="VARCHAR" property="ysdm"/>
+        <result column="DJH" jdbcType="VARCHAR" property="djh"/>
+        <result column="BDCDYH" jdbcType="VARCHAR" property="bdcdyh"/>
+        <result column="TXDZ" jdbcType="VARCHAR" property="txdz"/>
+        <result column="QSDWDM" jdbcType="VARCHAR" property="qsdwdm"/>
+        <result column="ZLDWDM" jdbcType="VARCHAR" property="zldwdm"/>
+        <result column="TDZL" jdbcType="VARCHAR" property="tdzl"/>
+        <result column="QSXZ" jdbcType="VARCHAR" property="qsxz"/>
+        <result column="QSLX" jdbcType="VARCHAR" property="qslx"/>
+        <result column="SYQLX" jdbcType="VARCHAR" property="syqlx"/>
+        <result column="TDYT" jdbcType="VARCHAR" property="tdyt"/>
+        <result column="QLSDFS" jdbcType="VARCHAR" property="qlsdfs"/>
+        <result column="MJDW" jdbcType="VARCHAR" property="mjdw"/>
+        <result column="TDJB" jdbcType="VARCHAR" property="tdjb"/>
+        <result column="TDSYZMC" jdbcType="VARCHAR" property="tdsyzmc"/>
+        <result column="ZDSZN" jdbcType="VARCHAR" property="zdszn"/>
+        <result column="ZDSZX" jdbcType="VARCHAR" property="zdszx"/>
+        <result column="ZDSZB" jdbcType="VARCHAR" property="zdszb"/>
+        <result column="YDJH" jdbcType="VARCHAR" property="ydjh"/>
+        <result column="YBDJH" jdbcType="VARCHAR" property="ybdjh"/>
+        <result column="YDLBM" jdbcType="VARCHAR" property="ydlbm"/>
+        <result column="GDHTH" jdbcType="VARCHAR" property="gdhth"/>
+        <result column="DZJGH" jdbcType="VARCHAR" property="dzjgh"/>
+        <result column="GMJJHYFLDM" jdbcType="VARCHAR" property="gmjjhyfldm"/>
+        <result column="BZ" jdbcType="VARCHAR" property="bz"/>
+        <result column="SFXZ" jdbcType="VARCHAR" property="sfxz"/>
+        <result column="BDCDYHZT" jdbcType="VARCHAR" property="bdcdyhzt"/>
+        <result column="ZDZT" jdbcType="VARCHAR" property="zdzt"/>
+        <result column="ZDSZD" jdbcType="VARCHAR" property="zdszd"/>
+        <result column="PZYT" jdbcType="VARCHAR" property="pzyt"/>
+        <result column="QLR" jdbcType="VARCHAR" property="qlr"/>
+        <result column="BZZJRXM" jdbcType="VARCHAR" property="bzzjrxm"/>
+        <result column="XZQDM" jdbcType="VARCHAR" property="xzqdm"/>
+        <result column="DJ" jdbcType="VARCHAR" property="dj"/>
+        <result column="BGBH" jdbcType="VARCHAR" property="bgbh"/>
+        <result column="FLDM" jdbcType="VARCHAR" property="fldm"/>
+        <result column="SSQY" jdbcType="VARCHAR" property="ssqy"/>
+        <result column="BDCLXXX" jdbcType="VARCHAR" property="bdclxxx"/>
+        <result column="FZZL" jdbcType="VARCHAR" property="fzzl"/>
+        <result column="BDCCQZH" jdbcType="VARCHAR" property="bdccqzh"/>
+        <result column="BDCQLR" jdbcType="VARCHAR" property="bdcqlr"/>
+        <result column="ZDMJ" jdbcType="VARCHAR" property="zdmj"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        SmID
+        , SmKey, SmSdriW, SmSdriN, SmSdriE, SmSdriS, SmGranule, SmGeometry, SmUserID,
+    SmLibTileID, SmArea, SmPerimeter, OBJECTID, BSM, SCMJ, FZMJ, JZRJL, JZMD, SBDJ, QDJG, 
+    ZDZMJ, JZZMJ, PZMJ, JLRQ, GXRQ, ZDGD, Shape_Leng, Shape_Area, YSDM1, YSDM, DJH, BDCDYH, 
+    TXDZ, QSDWDM, ZLDWDM, TDZL, QSXZ, QSLX, SYQLX, TDYT, QLSDFS, MJDW, TDJB, TDSYZMC, 
+    ZDSZN, ZDSZX, ZDSZB, YDJH, YBDJH, YDLBM, GDHTH, DZJGH, GMJJHYFLDM, BZ, SFXZ, BDCDYHZT, 
+    ZDZT, ZDSZD, PZYT, QLR, BZZJRXM, XZQDM, DJ, BGBH, FLDM, SSQY, BDCLXXX, FZZL, BDCCQZH, 
+    BDCQLR, ZDMJ
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from SMDTV_2
+        where SmID = #{smid,jdbcType=INTEGER}
+    </select>
+
+    <select id="findAll" resultType="com.ssm.domain.Smdtv2">
+        select * from smdtv_2
+        <where>
+            <if test="djh!=null and djh !=''">
+                and djh like concat ('%',#{djh},'%')
+            </if>
+            <if test="bdcqlr!=null and bdcqlr !=''">
+                and bdcqlr like concat ('%',#{bdcqlr},'%')
+            </if>
+            <if test="bdccqzh!=null and bdccqzh !=''">
+                and bdccqzh like concat ('%',#{bdccqzh},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from SMDTV_2
+        where SmID = #{smid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="SmID" keyProperty="smid" parameterType="com.ssm.domain.Smdtv2"
+            useGeneratedKeys="true">
+        insert into SMDTV_2 (SmKey, SmSdriW, SmSdriN,
+                             SmSdriE, SmSdriS, SmGranule,
+                             SmGeometry, SmUserID, SmLibTileID,
+                             SmArea, SmPerimeter, OBJECTID,
+                             BSM, SCMJ, FZMJ, JZRJL,
+                             JZMD, SBDJ, QDJG, ZDZMJ,
+                             JZZMJ, PZMJ, JLRQ, GXRQ,
+                             ZDGD, Shape_Leng, Shape_Area,
+                             YSDM1, YSDM, DJH, BDCDYH,
+                             TXDZ, QSDWDM, ZLDWDM,
+                             TDZL, QSXZ, QSLX, SYQLX,
+                             TDYT, QLSDFS, MJDW,
+                             TDJB, TDSYZMC, ZDSZN,
+                             ZDSZX, ZDSZB, YDJH,
+                             YBDJH, YDLBM, GDHTH,
+                             DZJGH, GMJJHYFLDM, BZ,
+                             SFXZ, BDCDYHZT, ZDZT,
+                             ZDSZD, PZYT, QLR, BZZJRXM,
+                             XZQDM, DJ, BGBH, FLDM,
+                             SSQY, BDCLXXX, FZZL,
+                             BDCCQZH, BDCQLR, ZDMJ)
+        values (#{smkey,jdbcType=INTEGER}, #{smsdriw,jdbcType=FLOAT}, #{smsdrin,jdbcType=FLOAT},
+                #{smsdrie,jdbcType=FLOAT}, #{smsdris,jdbcType=FLOAT}, #{smgranule,jdbcType=FLOAT},
+                #{smgeometry,jdbcType=OTHER}, #{smuserid,jdbcType=INTEGER}, #{smlibtileid,jdbcType=INTEGER},
+                #{smarea,jdbcType=FLOAT}, #{smperimeter,jdbcType=FLOAT}, #{objectid,jdbcType=INTEGER},
+                #{bsm,jdbcType=INTEGER}, #{scmj,jdbcType=FLOAT}, #{fzmj,jdbcType=FLOAT}, #{jzrjl,jdbcType=FLOAT},
+                #{jzmd,jdbcType=FLOAT}, #{sbdj,jdbcType=FLOAT}, #{qdjg,jdbcType=FLOAT}, #{zdzmj,jdbcType=FLOAT},
+                #{jzzmj,jdbcType=FLOAT}, #{pzmj,jdbcType=FLOAT}, #{jlrq,jdbcType=TIMESTAMP}, #{gxrq,jdbcType=TIMESTAMP},
+                #{zdgd,jdbcType=FLOAT}, #{shapeLeng,jdbcType=FLOAT}, #{shapeArea,jdbcType=FLOAT},
+                #{ysdm1,jdbcType=VARCHAR}, #{ysdm,jdbcType=VARCHAR}, #{djh,jdbcType=VARCHAR},
+                #{bdcdyh,jdbcType=VARCHAR},
+                #{txdz,jdbcType=VARCHAR}, #{qsdwdm,jdbcType=VARCHAR}, #{zldwdm,jdbcType=VARCHAR},
+                #{tdzl,jdbcType=VARCHAR}, #{qsxz,jdbcType=VARCHAR}, #{qslx,jdbcType=VARCHAR}, #{syqlx,jdbcType=VARCHAR},
+                #{tdyt,jdbcType=VARCHAR}, #{qlsdfs,jdbcType=VARCHAR}, #{mjdw,jdbcType=VARCHAR},
+                #{tdjb,jdbcType=VARCHAR}, #{tdsyzmc,jdbcType=VARCHAR}, #{zdszn,jdbcType=VARCHAR},
+                #{zdszx,jdbcType=VARCHAR}, #{zdszb,jdbcType=VARCHAR}, #{ydjh,jdbcType=VARCHAR},
+                #{ybdjh,jdbcType=VARCHAR}, #{ydlbm,jdbcType=VARCHAR}, #{gdhth,jdbcType=VARCHAR},
+                #{dzjgh,jdbcType=VARCHAR}, #{gmjjhyfldm,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR},
+                #{sfxz,jdbcType=VARCHAR}, #{bdcdyhzt,jdbcType=VARCHAR}, #{zdzt,jdbcType=VARCHAR},
+                #{zdszd,jdbcType=VARCHAR}, #{pzyt,jdbcType=VARCHAR}, #{qlr,jdbcType=VARCHAR},
+                #{bzzjrxm,jdbcType=VARCHAR},
+                #{xzqdm,jdbcType=VARCHAR}, #{dj,jdbcType=VARCHAR}, #{bgbh,jdbcType=VARCHAR}, #{fldm,jdbcType=VARCHAR},
+                #{ssqy,jdbcType=VARCHAR}, #{bdclxxx,jdbcType=VARCHAR}, #{fzzl,jdbcType=VARCHAR},
+                #{bdccqzh,jdbcType=VARCHAR}, #{bdcqlr,jdbcType=VARCHAR}, #{zdmj,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="SmID" keyProperty="smid" parameterType="com.ssm.domain.Smdtv2"
+            useGeneratedKeys="true">
+        insert into SMDTV_2
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="smkey != null">
+                SmKey,
+            </if>
+            <if test="smsdriw != null">
+                SmSdriW,
+            </if>
+            <if test="smsdrin != null">
+                SmSdriN,
+            </if>
+            <if test="smsdrie != null">
+                SmSdriE,
+            </if>
+            <if test="smsdris != null">
+                SmSdriS,
+            </if>
+            <if test="smgranule != null">
+                SmGranule,
+            </if>
+            <if test="smgeometry != null">
+                SmGeometry,
+            </if>
+            <if test="smuserid != null">
+                SmUserID,
+            </if>
+            <if test="smlibtileid != null">
+                SmLibTileID,
+            </if>
+            <if test="smarea != null">
+                SmArea,
+            </if>
+            <if test="smperimeter != null">
+                SmPerimeter,
+            </if>
+            <if test="objectid != null">
+                OBJECTID,
+            </if>
+            <if test="bsm != null">
+                BSM,
+            </if>
+            <if test="scmj != null">
+                SCMJ,
+            </if>
+            <if test="fzmj != null">
+                FZMJ,
+            </if>
+            <if test="jzrjl != null">
+                JZRJL,
+            </if>
+            <if test="jzmd != null">
+                JZMD,
+            </if>
+            <if test="sbdj != null">
+                SBDJ,
+            </if>
+            <if test="qdjg != null">
+                QDJG,
+            </if>
+            <if test="zdzmj != null">
+                ZDZMJ,
+            </if>
+            <if test="jzzmj != null">
+                JZZMJ,
+            </if>
+            <if test="pzmj != null">
+                PZMJ,
+            </if>
+            <if test="jlrq != null">
+                JLRQ,
+            </if>
+            <if test="gxrq != null">
+                GXRQ,
+            </if>
+            <if test="zdgd != null">
+                ZDGD,
+            </if>
+            <if test="shapeLeng != null">
+                Shape_Leng,
+            </if>
+            <if test="shapeArea != null">
+                Shape_Area,
+            </if>
+            <if test="ysdm1 != null">
+                YSDM1,
+            </if>
+            <if test="ysdm != null">
+                YSDM,
+            </if>
+            <if test="djh != null">
+                DJH,
+            </if>
+            <if test="bdcdyh != null">
+                BDCDYH,
+            </if>
+            <if test="txdz != null">
+                TXDZ,
+            </if>
+            <if test="qsdwdm != null">
+                QSDWDM,
+            </if>
+            <if test="zldwdm != null">
+                ZLDWDM,
+            </if>
+            <if test="tdzl != null">
+                TDZL,
+            </if>
+            <if test="qsxz != null">
+                QSXZ,
+            </if>
+            <if test="qslx != null">
+                QSLX,
+            </if>
+            <if test="syqlx != null">
+                SYQLX,
+            </if>
+            <if test="tdyt != null">
+                TDYT,
+            </if>
+            <if test="qlsdfs != null">
+                QLSDFS,
+            </if>
+            <if test="mjdw != null">
+                MJDW,
+            </if>
+            <if test="tdjb != null">
+                TDJB,
+            </if>
+            <if test="tdsyzmc != null">
+                TDSYZMC,
+            </if>
+            <if test="zdszn != null">
+                ZDSZN,
+            </if>
+            <if test="zdszx != null">
+                ZDSZX,
+            </if>
+            <if test="zdszb != null">
+                ZDSZB,
+            </if>
+            <if test="ydjh != null">
+                YDJH,
+            </if>
+            <if test="ybdjh != null">
+                YBDJH,
+            </if>
+            <if test="ydlbm != null">
+                YDLBM,
+            </if>
+            <if test="gdhth != null">
+                GDHTH,
+            </if>
+            <if test="dzjgh != null">
+                DZJGH,
+            </if>
+            <if test="gmjjhyfldm != null">
+                GMJJHYFLDM,
+            </if>
+            <if test="bz != null">
+                BZ,
+            </if>
+            <if test="sfxz != null">
+                SFXZ,
+            </if>
+            <if test="bdcdyhzt != null">
+                BDCDYHZT,
+            </if>
+            <if test="zdzt != null">
+                ZDZT,
+            </if>
+            <if test="zdszd != null">
+                ZDSZD,
+            </if>
+            <if test="pzyt != null">
+                PZYT,
+            </if>
+            <if test="qlr != null">
+                QLR,
+            </if>
+            <if test="bzzjrxm != null">
+                BZZJRXM,
+            </if>
+            <if test="xzqdm != null">
+                XZQDM,
+            </if>
+            <if test="dj != null">
+                DJ,
+            </if>
+            <if test="bgbh != null">
+                BGBH,
+            </if>
+            <if test="fldm != null">
+                FLDM,
+            </if>
+            <if test="ssqy != null">
+                SSQY,
+            </if>
+            <if test="bdclxxx != null">
+                BDCLXXX,
+            </if>
+            <if test="fzzl != null">
+                FZZL,
+            </if>
+            <if test="bdccqzh != null">
+                BDCCQZH,
+            </if>
+            <if test="bdcqlr != null">
+                BDCQLR,
+            </if>
+            <if test="zdmj != null">
+                ZDMJ,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="smkey != null">
+                #{smkey,jdbcType=INTEGER},
+            </if>
+            <if test="smsdriw != null">
+                #{smsdriw,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrin != null">
+                #{smsdrin,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrie != null">
+                #{smsdrie,jdbcType=FLOAT},
+            </if>
+            <if test="smsdris != null">
+                #{smsdris,jdbcType=FLOAT},
+            </if>
+            <if test="smgranule != null">
+                #{smgranule,jdbcType=FLOAT},
+            </if>
+            <if test="smgeometry != null">
+                #{smgeometry,jdbcType=OTHER},
+            </if>
+            <if test="smuserid != null">
+                #{smuserid,jdbcType=INTEGER},
+            </if>
+            <if test="smlibtileid != null">
+                #{smlibtileid,jdbcType=INTEGER},
+            </if>
+            <if test="smarea != null">
+                #{smarea,jdbcType=FLOAT},
+            </if>
+            <if test="smperimeter != null">
+                #{smperimeter,jdbcType=FLOAT},
+            </if>
+            <if test="objectid != null">
+                #{objectid,jdbcType=INTEGER},
+            </if>
+            <if test="bsm != null">
+                #{bsm,jdbcType=INTEGER},
+            </if>
+            <if test="scmj != null">
+                #{scmj,jdbcType=FLOAT},
+            </if>
+            <if test="fzmj != null">
+                #{fzmj,jdbcType=FLOAT},
+            </if>
+            <if test="jzrjl != null">
+                #{jzrjl,jdbcType=FLOAT},
+            </if>
+            <if test="jzmd != null">
+                #{jzmd,jdbcType=FLOAT},
+            </if>
+            <if test="sbdj != null">
+                #{sbdj,jdbcType=FLOAT},
+            </if>
+            <if test="qdjg != null">
+                #{qdjg,jdbcType=FLOAT},
+            </if>
+            <if test="zdzmj != null">
+                #{zdzmj,jdbcType=FLOAT},
+            </if>
+            <if test="jzzmj != null">
+                #{jzzmj,jdbcType=FLOAT},
+            </if>
+            <if test="pzmj != null">
+                #{pzmj,jdbcType=FLOAT},
+            </if>
+            <if test="jlrq != null">
+                #{jlrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gxrq != null">
+                #{gxrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="zdgd != null">
+                #{zdgd,jdbcType=FLOAT},
+            </if>
+            <if test="shapeLeng != null">
+                #{shapeLeng,jdbcType=FLOAT},
+            </if>
+            <if test="shapeArea != null">
+                #{shapeArea,jdbcType=FLOAT},
+            </if>
+            <if test="ysdm1 != null">
+                #{ysdm1,jdbcType=VARCHAR},
+            </if>
+            <if test="ysdm != null">
+                #{ysdm,jdbcType=VARCHAR},
+            </if>
+            <if test="djh != null">
+                #{djh,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcdyh != null">
+                #{bdcdyh,jdbcType=VARCHAR},
+            </if>
+            <if test="txdz != null">
+                #{txdz,jdbcType=VARCHAR},
+            </if>
+            <if test="qsdwdm != null">
+                #{qsdwdm,jdbcType=VARCHAR},
+            </if>
+            <if test="zldwdm != null">
+                #{zldwdm,jdbcType=VARCHAR},
+            </if>
+            <if test="tdzl != null">
+                #{tdzl,jdbcType=VARCHAR},
+            </if>
+            <if test="qsxz != null">
+                #{qsxz,jdbcType=VARCHAR},
+            </if>
+            <if test="qslx != null">
+                #{qslx,jdbcType=VARCHAR},
+            </if>
+            <if test="syqlx != null">
+                #{syqlx,jdbcType=VARCHAR},
+            </if>
+            <if test="tdyt != null">
+                #{tdyt,jdbcType=VARCHAR},
+            </if>
+            <if test="qlsdfs != null">
+                #{qlsdfs,jdbcType=VARCHAR},
+            </if>
+            <if test="mjdw != null">
+                #{mjdw,jdbcType=VARCHAR},
+            </if>
+            <if test="tdjb != null">
+                #{tdjb,jdbcType=VARCHAR},
+            </if>
+            <if test="tdsyzmc != null">
+                #{tdsyzmc,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszn != null">
+                #{zdszn,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszx != null">
+                #{zdszx,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszb != null">
+                #{zdszb,jdbcType=VARCHAR},
+            </if>
+            <if test="ydjh != null">
+                #{ydjh,jdbcType=VARCHAR},
+            </if>
+            <if test="ybdjh != null">
+                #{ybdjh,jdbcType=VARCHAR},
+            </if>
+            <if test="ydlbm != null">
+                #{ydlbm,jdbcType=VARCHAR},
+            </if>
+            <if test="gdhth != null">
+                #{gdhth,jdbcType=VARCHAR},
+            </if>
+            <if test="dzjgh != null">
+                #{dzjgh,jdbcType=VARCHAR},
+            </if>
+            <if test="gmjjhyfldm != null">
+                #{gmjjhyfldm,jdbcType=VARCHAR},
+            </if>
+            <if test="bz != null">
+                #{bz,jdbcType=VARCHAR},
+            </if>
+            <if test="sfxz != null">
+                #{sfxz,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcdyhzt != null">
+                #{bdcdyhzt,jdbcType=VARCHAR},
+            </if>
+            <if test="zdzt != null">
+                #{zdzt,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszd != null">
+                #{zdszd,jdbcType=VARCHAR},
+            </if>
+            <if test="pzyt != null">
+                #{pzyt,jdbcType=VARCHAR},
+            </if>
+            <if test="qlr != null">
+                #{qlr,jdbcType=VARCHAR},
+            </if>
+            <if test="bzzjrxm != null">
+                #{bzzjrxm,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqdm != null">
+                #{xzqdm,jdbcType=VARCHAR},
+            </if>
+            <if test="dj != null">
+                #{dj,jdbcType=VARCHAR},
+            </if>
+            <if test="bgbh != null">
+                #{bgbh,jdbcType=VARCHAR},
+            </if>
+            <if test="fldm != null">
+                #{fldm,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null">
+                #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="bdclxxx != null">
+                #{bdclxxx,jdbcType=VARCHAR},
+            </if>
+            <if test="fzzl != null">
+                #{fzzl,jdbcType=VARCHAR},
+            </if>
+            <if test="bdccqzh != null">
+                #{bdccqzh,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcqlr != null">
+                #{bdcqlr,jdbcType=VARCHAR},
+            </if>
+            <if test="zdmj != null">
+                #{zdmj,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ssm.domain.Smdtv2">
+        update SMDTV_2
+        <set>
+            <if test="smkey != null">
+                SmKey = #{smkey,jdbcType=INTEGER},
+            </if>
+            <if test="smsdriw != null">
+                SmSdriW = #{smsdriw,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrin != null">
+                SmSdriN = #{smsdrin,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrie != null">
+                SmSdriE = #{smsdrie,jdbcType=FLOAT},
+            </if>
+            <if test="smsdris != null">
+                SmSdriS = #{smsdris,jdbcType=FLOAT},
+            </if>
+            <if test="smgranule != null">
+                SmGranule = #{smgranule,jdbcType=FLOAT},
+            </if>
+            <if test="smgeometry != null">
+                SmGeometry = #{smgeometry,jdbcType=OTHER},
+            </if>
+            <if test="smuserid != null">
+                SmUserID = #{smuserid,jdbcType=INTEGER},
+            </if>
+            <if test="smlibtileid != null">
+                SmLibTileID = #{smlibtileid,jdbcType=INTEGER},
+            </if>
+            <if test="smarea != null">
+                SmArea = #{smarea,jdbcType=FLOAT},
+            </if>
+            <if test="smperimeter != null">
+                SmPerimeter = #{smperimeter,jdbcType=FLOAT},
+            </if>
+            <if test="objectid != null">
+                OBJECTID = #{objectid,jdbcType=INTEGER},
+            </if>
+            <if test="bsm != null">
+                BSM = #{bsm,jdbcType=INTEGER},
+            </if>
+            <if test="scmj != null">
+                SCMJ = #{scmj,jdbcType=FLOAT},
+            </if>
+            <if test="fzmj != null">
+                FZMJ = #{fzmj,jdbcType=FLOAT},
+            </if>
+            <if test="jzrjl != null">
+                JZRJL = #{jzrjl,jdbcType=FLOAT},
+            </if>
+            <if test="jzmd != null">
+                JZMD = #{jzmd,jdbcType=FLOAT},
+            </if>
+            <if test="sbdj != null">
+                SBDJ = #{sbdj,jdbcType=FLOAT},
+            </if>
+            <if test="qdjg != null">
+                QDJG = #{qdjg,jdbcType=FLOAT},
+            </if>
+            <if test="zdzmj != null">
+                ZDZMJ = #{zdzmj,jdbcType=FLOAT},
+            </if>
+            <if test="jzzmj != null">
+                JZZMJ = #{jzzmj,jdbcType=FLOAT},
+            </if>
+            <if test="pzmj != null">
+                PZMJ = #{pzmj,jdbcType=FLOAT},
+            </if>
+            <if test="jlrq != null">
+                JLRQ = #{jlrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gxrq != null">
+                GXRQ = #{gxrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="zdgd != null">
+                ZDGD = #{zdgd,jdbcType=FLOAT},
+            </if>
+            <if test="shapeLeng != null">
+                Shape_Leng = #{shapeLeng,jdbcType=FLOAT},
+            </if>
+            <if test="shapeArea != null">
+                Shape_Area = #{shapeArea,jdbcType=FLOAT},
+            </if>
+            <if test="ysdm1 != null">
+                YSDM1 = #{ysdm1,jdbcType=VARCHAR},
+            </if>
+            <if test="ysdm != null">
+                YSDM = #{ysdm,jdbcType=VARCHAR},
+            </if>
+            <if test="djh != null">
+                DJH = #{djh,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcdyh != null">
+                BDCDYH = #{bdcdyh,jdbcType=VARCHAR},
+            </if>
+            <if test="txdz != null">
+                TXDZ = #{txdz,jdbcType=VARCHAR},
+            </if>
+            <if test="qsdwdm != null">
+                QSDWDM = #{qsdwdm,jdbcType=VARCHAR},
+            </if>
+            <if test="zldwdm != null">
+                ZLDWDM = #{zldwdm,jdbcType=VARCHAR},
+            </if>
+            <if test="tdzl != null">
+                TDZL = #{tdzl,jdbcType=VARCHAR},
+            </if>
+            <if test="qsxz != null">
+                QSXZ = #{qsxz,jdbcType=VARCHAR},
+            </if>
+            <if test="qslx != null">
+                QSLX = #{qslx,jdbcType=VARCHAR},
+            </if>
+            <if test="syqlx != null">
+                SYQLX = #{syqlx,jdbcType=VARCHAR},
+            </if>
+            <if test="tdyt != null">
+                TDYT = #{tdyt,jdbcType=VARCHAR},
+            </if>
+            <if test="qlsdfs != null">
+                QLSDFS = #{qlsdfs,jdbcType=VARCHAR},
+            </if>
+            <if test="mjdw != null">
+                MJDW = #{mjdw,jdbcType=VARCHAR},
+            </if>
+            <if test="tdjb != null">
+                TDJB = #{tdjb,jdbcType=VARCHAR},
+            </if>
+            <if test="tdsyzmc != null">
+                TDSYZMC = #{tdsyzmc,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszn != null">
+                ZDSZN = #{zdszn,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszx != null">
+                ZDSZX = #{zdszx,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszb != null">
+                ZDSZB = #{zdszb,jdbcType=VARCHAR},
+            </if>
+            <if test="ydjh != null">
+                YDJH = #{ydjh,jdbcType=VARCHAR},
+            </if>
+            <if test="ybdjh != null">
+                YBDJH = #{ybdjh,jdbcType=VARCHAR},
+            </if>
+            <if test="ydlbm != null">
+                YDLBM = #{ydlbm,jdbcType=VARCHAR},
+            </if>
+            <if test="gdhth != null">
+                GDHTH = #{gdhth,jdbcType=VARCHAR},
+            </if>
+            <if test="dzjgh != null">
+                DZJGH = #{dzjgh,jdbcType=VARCHAR},
+            </if>
+            <if test="gmjjhyfldm != null">
+                GMJJHYFLDM = #{gmjjhyfldm,jdbcType=VARCHAR},
+            </if>
+            <if test="bz != null">
+                BZ = #{bz,jdbcType=VARCHAR},
+            </if>
+            <if test="sfxz != null">
+                SFXZ = #{sfxz,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcdyhzt != null">
+                BDCDYHZT = #{bdcdyhzt,jdbcType=VARCHAR},
+            </if>
+            <if test="zdzt != null">
+                ZDZT = #{zdzt,jdbcType=VARCHAR},
+            </if>
+            <if test="zdszd != null">
+                ZDSZD = #{zdszd,jdbcType=VARCHAR},
+            </if>
+            <if test="pzyt != null">
+                PZYT = #{pzyt,jdbcType=VARCHAR},
+            </if>
+            <if test="qlr != null">
+                QLR = #{qlr,jdbcType=VARCHAR},
+            </if>
+            <if test="bzzjrxm != null">
+                BZZJRXM = #{bzzjrxm,jdbcType=VARCHAR},
+            </if>
+            <if test="xzqdm != null">
+                XZQDM = #{xzqdm,jdbcType=VARCHAR},
+            </if>
+            <if test="dj != null">
+                DJ = #{dj,jdbcType=VARCHAR},
+            </if>
+            <if test="bgbh != null">
+                BGBH = #{bgbh,jdbcType=VARCHAR},
+            </if>
+            <if test="fldm != null">
+                FLDM = #{fldm,jdbcType=VARCHAR},
+            </if>
+            <if test="ssqy != null">
+                SSQY = #{ssqy,jdbcType=VARCHAR},
+            </if>
+            <if test="bdclxxx != null">
+                BDCLXXX = #{bdclxxx,jdbcType=VARCHAR},
+            </if>
+            <if test="fzzl != null">
+                FZZL = #{fzzl,jdbcType=VARCHAR},
+            </if>
+            <if test="bdccqzh != null">
+                BDCCQZH = #{bdccqzh,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcqlr != null">
+                BDCQLR = #{bdcqlr,jdbcType=VARCHAR},
+            </if>
+            <if test="zdmj != null">
+                ZDMJ = #{zdmj,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SmID = #{smid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ssm.domain.Smdtv2">
+        update SMDTV_2
+        set SmKey       = #{smkey,jdbcType=INTEGER},
+            SmSdriW     = #{smsdriw,jdbcType=FLOAT},
+            SmSdriN     = #{smsdrin,jdbcType=FLOAT},
+            SmSdriE     = #{smsdrie,jdbcType=FLOAT},
+            SmSdriS     = #{smsdris,jdbcType=FLOAT},
+            SmGranule   = #{smgranule,jdbcType=FLOAT},
+            SmGeometry  = #{smgeometry,jdbcType=OTHER},
+            SmUserID    = #{smuserid,jdbcType=INTEGER},
+            SmLibTileID = #{smlibtileid,jdbcType=INTEGER},
+            SmArea      = #{smarea,jdbcType=FLOAT},
+            SmPerimeter = #{smperimeter,jdbcType=FLOAT},
+            OBJECTID    = #{objectid,jdbcType=INTEGER},
+            BSM         = #{bsm,jdbcType=INTEGER},
+            SCMJ        = #{scmj,jdbcType=FLOAT},
+            FZMJ        = #{fzmj,jdbcType=FLOAT},
+            JZRJL       = #{jzrjl,jdbcType=FLOAT},
+            JZMD        = #{jzmd,jdbcType=FLOAT},
+            SBDJ        = #{sbdj,jdbcType=FLOAT},
+            QDJG        = #{qdjg,jdbcType=FLOAT},
+            ZDZMJ       = #{zdzmj,jdbcType=FLOAT},
+            JZZMJ       = #{jzzmj,jdbcType=FLOAT},
+            PZMJ        = #{pzmj,jdbcType=FLOAT},
+            JLRQ        = #{jlrq,jdbcType=TIMESTAMP},
+            GXRQ        = #{gxrq,jdbcType=TIMESTAMP},
+            ZDGD        = #{zdgd,jdbcType=FLOAT},
+            Shape_Leng  = #{shapeLeng,jdbcType=FLOAT},
+            Shape_Area  = #{shapeArea,jdbcType=FLOAT},
+            YSDM1       = #{ysdm1,jdbcType=VARCHAR},
+            YSDM        = #{ysdm,jdbcType=VARCHAR},
+            DJH         = #{djh,jdbcType=VARCHAR},
+            BDCDYH      = #{bdcdyh,jdbcType=VARCHAR},
+            TXDZ        = #{txdz,jdbcType=VARCHAR},
+            QSDWDM      = #{qsdwdm,jdbcType=VARCHAR},
+            ZLDWDM      = #{zldwdm,jdbcType=VARCHAR},
+            TDZL        = #{tdzl,jdbcType=VARCHAR},
+            QSXZ        = #{qsxz,jdbcType=VARCHAR},
+            QSLX        = #{qslx,jdbcType=VARCHAR},
+            SYQLX       = #{syqlx,jdbcType=VARCHAR},
+            TDYT        = #{tdyt,jdbcType=VARCHAR},
+            QLSDFS      = #{qlsdfs,jdbcType=VARCHAR},
+            MJDW        = #{mjdw,jdbcType=VARCHAR},
+            TDJB        = #{tdjb,jdbcType=VARCHAR},
+            TDSYZMC     = #{tdsyzmc,jdbcType=VARCHAR},
+            ZDSZN       = #{zdszn,jdbcType=VARCHAR},
+            ZDSZX       = #{zdszx,jdbcType=VARCHAR},
+            ZDSZB       = #{zdszb,jdbcType=VARCHAR},
+            YDJH        = #{ydjh,jdbcType=VARCHAR},
+            YBDJH       = #{ybdjh,jdbcType=VARCHAR},
+            YDLBM       = #{ydlbm,jdbcType=VARCHAR},
+            GDHTH       = #{gdhth,jdbcType=VARCHAR},
+            DZJGH       = #{dzjgh,jdbcType=VARCHAR},
+            GMJJHYFLDM  = #{gmjjhyfldm,jdbcType=VARCHAR},
+            BZ          = #{bz,jdbcType=VARCHAR},
+            SFXZ        = #{sfxz,jdbcType=VARCHAR},
+            BDCDYHZT    = #{bdcdyhzt,jdbcType=VARCHAR},
+            ZDZT        = #{zdzt,jdbcType=VARCHAR},
+            ZDSZD       = #{zdszd,jdbcType=VARCHAR},
+            PZYT        = #{pzyt,jdbcType=VARCHAR},
+            QLR         = #{qlr,jdbcType=VARCHAR},
+            BZZJRXM     = #{bzzjrxm,jdbcType=VARCHAR},
+            XZQDM       = #{xzqdm,jdbcType=VARCHAR},
+            DJ          = #{dj,jdbcType=VARCHAR},
+            BGBH        = #{bgbh,jdbcType=VARCHAR},
+            FLDM        = #{fldm,jdbcType=VARCHAR},
+            SSQY        = #{ssqy,jdbcType=VARCHAR},
+            BDCLXXX     = #{bdclxxx,jdbcType=VARCHAR},
+            FZZL        = #{fzzl,jdbcType=VARCHAR},
+            BDCCQZH     = #{bdccqzh,jdbcType=VARCHAR},
+            BDCQLR      = #{bdcqlr,jdbcType=VARCHAR},
+            ZDMJ        = #{zdmj,jdbcType=VARCHAR}
+        where SmID = #{smid,jdbcType=INTEGER}
+    </update>
+</mapper>

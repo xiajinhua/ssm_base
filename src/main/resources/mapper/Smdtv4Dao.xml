@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.Smdtv4Dao">
+    <resultMap id="BaseResultMap" type="com.ssm.domain.Smdtv4">
+        <id column="SmID" jdbcType="INTEGER" property="smid"/>
+        <result column="SmKey" jdbcType="INTEGER" property="smkey"/>
+        <result column="SmSdriW" jdbcType="FLOAT" property="smsdriw"/>
+        <result column="SmSdriN" jdbcType="FLOAT" property="smsdrin"/>
+        <result column="SmSdriE" jdbcType="FLOAT" property="smsdrie"/>
+        <result column="SmSdriS" jdbcType="FLOAT" property="smsdris"/>
+        <result column="SmGranule" jdbcType="FLOAT" property="smgranule"/>
+        <result column="SmGeometry" jdbcType="OTHER" property="smgeometry"/>
+        <result column="SmUserID" jdbcType="INTEGER" property="smuserid"/>
+        <result column="SmLibTileID" jdbcType="INTEGER" property="smlibtileid"/>
+        <result column="SmArea" jdbcType="FLOAT" property="smarea"/>
+        <result column="SmPerimeter" jdbcType="FLOAT" property="smperimeter"/>
+        <result column="OBJECTID" jdbcType="INTEGER" property="objectid"/>
+        <result column="SZCS" jdbcType="INTEGER" property="szcs"/>
+        <result column="CG" jdbcType="FLOAT" property="cg"/>
+        <result column="QSGD" jdbcType="FLOAT" property="qsgd"/>
+        <result column="JLRQ" jdbcType="TIMESTAMP" property="jlrq"/>
+        <result column="GXRQ" jdbcType="TIMESTAMP" property="gxrq"/>
+        <result column="SHAPE_Leng" jdbcType="FLOAT" property="shapeLeng"/>
+        <result column="SHAPE_Area" jdbcType="FLOAT" property="shapeArea"/>
+        <result column="BDCDYH" jdbcType="VARCHAR" property="bdcdyh"/>
+        <result column="MC" jdbcType="VARCHAR" property="mc"/>
+        <result column="ZLDZ" jdbcType="VARCHAR" property="zldz"/>
+        <result column="LSZD" jdbcType="VARCHAR" property="lszd"/>
+        <result column="ZRZH" jdbcType="VARCHAR" property="zrzh"/>
+        <result column="SH" jdbcType="VARCHAR" property="sh"/>
+        <result column="BZ" jdbcType="VARCHAR" property="bz"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        SmID
+        , SmKey, SmSdriW, SmSdriN, SmSdriE, SmSdriS, SmGranule, SmGeometry, SmUserID,
+    SmLibTileID, SmArea, SmPerimeter, OBJECTID, SZCS, CG, QSGD, JLRQ, GXRQ, SHAPE_Leng, 
+    SHAPE_Area, BDCDYH, MC, ZLDZ, LSZD, ZRZH, SH, BZ
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from SMDTV_4
+        where SmID = #{smid,jdbcType=INTEGER}
+    </select>
+    <select id="findAll" resultType="com.ssm.domain.Smdtv4">
+        select *
+        from smdtv_4
+        <where>
+            <if test="bdcdyh!=null and bdcdyh !=''">
+                and bdcdyh like concat ('%',#{bdcdyh},'%')
+            </if>
+            <if test="mc!=null and mc !=''">
+                and mc like concat ('%',#{mc},'%')
+            </if>
+            <if test="zldz!=null and zldz !=''">
+                and zldz like concat ('%',#{zldz},'%')
+            </if>
+        </where>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from SMDTV_4
+        where SmID = #{smid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="SmID" keyProperty="smid" parameterType="com.ssm.domain.Smdtv4"
+            useGeneratedKeys="true">
+        insert into SMDTV_4 (SmKey, SmSdriW, SmSdriN,
+                             SmSdriE, SmSdriS, SmGranule,
+                             SmGeometry, SmUserID, SmLibTileID,
+                             SmArea, SmPerimeter, OBJECTID,
+                             SZCS, CG, QSGD, JLRQ,
+                             GXRQ, SHAPE_Leng, SHAPE_Area,
+                             BDCDYH, MC, ZLDZ, LSZD,
+                             ZRZH, SH, BZ)
+        values (#{smkey,jdbcType=INTEGER}, #{smsdriw,jdbcType=FLOAT}, #{smsdrin,jdbcType=FLOAT},
+                #{smsdrie,jdbcType=FLOAT}, #{smsdris,jdbcType=FLOAT}, #{smgranule,jdbcType=FLOAT},
+                #{smgeometry,jdbcType=OTHER}, #{smuserid,jdbcType=INTEGER}, #{smlibtileid,jdbcType=INTEGER},
+                #{smarea,jdbcType=FLOAT}, #{smperimeter,jdbcType=FLOAT}, #{objectid,jdbcType=INTEGER},
+                #{szcs,jdbcType=INTEGER}, #{cg,jdbcType=FLOAT}, #{qsgd,jdbcType=FLOAT}, #{jlrq,jdbcType=TIMESTAMP},
+                #{gxrq,jdbcType=TIMESTAMP}, #{shapeLeng,jdbcType=FLOAT}, #{shapeArea,jdbcType=FLOAT},
+                #{bdcdyh,jdbcType=VARCHAR}, #{mc,jdbcType=VARCHAR}, #{zldz,jdbcType=VARCHAR}, #{lszd,jdbcType=VARCHAR},
+                #{zrzh,jdbcType=VARCHAR}, #{sh,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="SmID" keyProperty="smid" parameterType="com.ssm.domain.Smdtv4"
+            useGeneratedKeys="true">
+        insert into SMDTV_4
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="smkey != null">
+                SmKey,
+            </if>
+            <if test="smsdriw != null">
+                SmSdriW,
+            </if>
+            <if test="smsdrin != null">
+                SmSdriN,
+            </if>
+            <if test="smsdrie != null">
+                SmSdriE,
+            </if>
+            <if test="smsdris != null">
+                SmSdriS,
+            </if>
+            <if test="smgranule != null">
+                SmGranule,
+            </if>
+            <if test="smgeometry != null">
+                SmGeometry,
+            </if>
+            <if test="smuserid != null">
+                SmUserID,
+            </if>
+            <if test="smlibtileid != null">
+                SmLibTileID,
+            </if>
+            <if test="smarea != null">
+                SmArea,
+            </if>
+            <if test="smperimeter != null">
+                SmPerimeter,
+            </if>
+            <if test="objectid != null">
+                OBJECTID,
+            </if>
+            <if test="szcs != null">
+                SZCS,
+            </if>
+            <if test="cg != null">
+                CG,
+            </if>
+            <if test="qsgd != null">
+                QSGD,
+            </if>
+            <if test="jlrq != null">
+                JLRQ,
+            </if>
+            <if test="gxrq != null">
+                GXRQ,
+            </if>
+            <if test="shapeLeng != null">
+                SHAPE_Leng,
+            </if>
+            <if test="shapeArea != null">
+                SHAPE_Area,
+            </if>
+            <if test="bdcdyh != null">
+                BDCDYH,
+            </if>
+            <if test="mc != null">
+                MC,
+            </if>
+            <if test="zldz != null">
+                ZLDZ,
+            </if>
+            <if test="lszd != null">
+                LSZD,
+            </if>
+            <if test="zrzh != null">
+                ZRZH,
+            </if>
+            <if test="sh != null">
+                SH,
+            </if>
+            <if test="bz != null">
+                BZ,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="smkey != null">
+                #{smkey,jdbcType=INTEGER},
+            </if>
+            <if test="smsdriw != null">
+                #{smsdriw,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrin != null">
+                #{smsdrin,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrie != null">
+                #{smsdrie,jdbcType=FLOAT},
+            </if>
+            <if test="smsdris != null">
+                #{smsdris,jdbcType=FLOAT},
+            </if>
+            <if test="smgranule != null">
+                #{smgranule,jdbcType=FLOAT},
+            </if>
+            <if test="smgeometry != null">
+                #{smgeometry,jdbcType=OTHER},
+            </if>
+            <if test="smuserid != null">
+                #{smuserid,jdbcType=INTEGER},
+            </if>
+            <if test="smlibtileid != null">
+                #{smlibtileid,jdbcType=INTEGER},
+            </if>
+            <if test="smarea != null">
+                #{smarea,jdbcType=FLOAT},
+            </if>
+            <if test="smperimeter != null">
+                #{smperimeter,jdbcType=FLOAT},
+            </if>
+            <if test="objectid != null">
+                #{objectid,jdbcType=INTEGER},
+            </if>
+            <if test="szcs != null">
+                #{szcs,jdbcType=INTEGER},
+            </if>
+            <if test="cg != null">
+                #{cg,jdbcType=FLOAT},
+            </if>
+            <if test="qsgd != null">
+                #{qsgd,jdbcType=FLOAT},
+            </if>
+            <if test="jlrq != null">
+                #{jlrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gxrq != null">
+                #{gxrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shapeLeng != null">
+                #{shapeLeng,jdbcType=FLOAT},
+            </if>
+            <if test="shapeArea != null">
+                #{shapeArea,jdbcType=FLOAT},
+            </if>
+            <if test="bdcdyh != null">
+                #{bdcdyh,jdbcType=VARCHAR},
+            </if>
+            <if test="mc != null">
+                #{mc,jdbcType=VARCHAR},
+            </if>
+            <if test="zldz != null">
+                #{zldz,jdbcType=VARCHAR},
+            </if>
+            <if test="lszd != null">
+                #{lszd,jdbcType=VARCHAR},
+            </if>
+            <if test="zrzh != null">
+                #{zrzh,jdbcType=VARCHAR},
+            </if>
+            <if test="sh != null">
+                #{sh,jdbcType=VARCHAR},
+            </if>
+            <if test="bz != null">
+                #{bz,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ssm.domain.Smdtv4">
+        update SMDTV_4
+        <set>
+            <if test="smkey != null">
+                SmKey = #{smkey,jdbcType=INTEGER},
+            </if>
+            <if test="smsdriw != null">
+                SmSdriW = #{smsdriw,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrin != null">
+                SmSdriN = #{smsdrin,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrie != null">
+                SmSdriE = #{smsdrie,jdbcType=FLOAT},
+            </if>
+            <if test="smsdris != null">
+                SmSdriS = #{smsdris,jdbcType=FLOAT},
+            </if>
+            <if test="smgranule != null">
+                SmGranule = #{smgranule,jdbcType=FLOAT},
+            </if>
+            <if test="smgeometry != null">
+                SmGeometry = #{smgeometry,jdbcType=OTHER},
+            </if>
+            <if test="smuserid != null">
+                SmUserID = #{smuserid,jdbcType=INTEGER},
+            </if>
+            <if test="smlibtileid != null">
+                SmLibTileID = #{smlibtileid,jdbcType=INTEGER},
+            </if>
+            <if test="smarea != null">
+                SmArea = #{smarea,jdbcType=FLOAT},
+            </if>
+            <if test="smperimeter != null">
+                SmPerimeter = #{smperimeter,jdbcType=FLOAT},
+            </if>
+            <if test="objectid != null">
+                OBJECTID = #{objectid,jdbcType=INTEGER},
+            </if>
+            <if test="szcs != null">
+                SZCS = #{szcs,jdbcType=INTEGER},
+            </if>
+            <if test="cg != null">
+                CG = #{cg,jdbcType=FLOAT},
+            </if>
+            <if test="qsgd != null">
+                QSGD = #{qsgd,jdbcType=FLOAT},
+            </if>
+            <if test="jlrq != null">
+                JLRQ = #{jlrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gxrq != null">
+                GXRQ = #{gxrq,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shapeLeng != null">
+                SHAPE_Leng = #{shapeLeng,jdbcType=FLOAT},
+            </if>
+            <if test="shapeArea != null">
+                SHAPE_Area = #{shapeArea,jdbcType=FLOAT},
+            </if>
+            <if test="bdcdyh != null">
+                BDCDYH = #{bdcdyh,jdbcType=VARCHAR},
+            </if>
+            <if test="mc != null">
+                MC = #{mc,jdbcType=VARCHAR},
+            </if>
+            <if test="zldz != null">
+                ZLDZ = #{zldz,jdbcType=VARCHAR},
+            </if>
+            <if test="lszd != null">
+                LSZD = #{lszd,jdbcType=VARCHAR},
+            </if>
+            <if test="zrzh != null">
+                ZRZH = #{zrzh,jdbcType=VARCHAR},
+            </if>
+            <if test="sh != null">
+                SH = #{sh,jdbcType=VARCHAR},
+            </if>
+            <if test="bz != null">
+                BZ = #{bz,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where SmID = #{smid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ssm.domain.Smdtv4">
+        update SMDTV_4
+        set SmKey       = #{smkey,jdbcType=INTEGER},
+            SmSdriW     = #{smsdriw,jdbcType=FLOAT},
+            SmSdriN     = #{smsdrin,jdbcType=FLOAT},
+            SmSdriE     = #{smsdrie,jdbcType=FLOAT},
+            SmSdriS     = #{smsdris,jdbcType=FLOAT},
+            SmGranule   = #{smgranule,jdbcType=FLOAT},
+            SmGeometry  = #{smgeometry,jdbcType=OTHER},
+            SmUserID    = #{smuserid,jdbcType=INTEGER},
+            SmLibTileID = #{smlibtileid,jdbcType=INTEGER},
+            SmArea      = #{smarea,jdbcType=FLOAT},
+            SmPerimeter = #{smperimeter,jdbcType=FLOAT},
+            OBJECTID    = #{objectid,jdbcType=INTEGER},
+            SZCS        = #{szcs,jdbcType=INTEGER},
+            CG          = #{cg,jdbcType=FLOAT},
+            QSGD        = #{qsgd,jdbcType=FLOAT},
+            JLRQ        = #{jlrq,jdbcType=TIMESTAMP},
+            GXRQ        = #{gxrq,jdbcType=TIMESTAMP},
+            SHAPE_Leng  = #{shapeLeng,jdbcType=FLOAT},
+            SHAPE_Area  = #{shapeArea,jdbcType=FLOAT},
+            BDCDYH      = #{bdcdyh,jdbcType=VARCHAR},
+            MC          = #{mc,jdbcType=VARCHAR},
+            ZLDZ        = #{zldz,jdbcType=VARCHAR},
+            LSZD        = #{lszd,jdbcType=VARCHAR},
+            ZRZH        = #{zrzh,jdbcType=VARCHAR},
+            SH          = #{sh,jdbcType=VARCHAR},
+            BZ          = #{bz,jdbcType=VARCHAR}
+        where SmID = #{smid,jdbcType=INTEGER}
+    </update>
+</mapper>

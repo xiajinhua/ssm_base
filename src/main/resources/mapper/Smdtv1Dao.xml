@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.Smdtv1Dao">
+    <resultMap id="BaseResultMap" type="com.ssm.domain.Smdtv1">
+        <id column="SmID" jdbcType="INTEGER" property="smid"/>
+        <result column="SmKey" jdbcType="INTEGER" property="smkey"/>
+        <result column="SmSdriW" jdbcType="FLOAT" property="smsdriw"/>
+        <result column="SmSdriN" jdbcType="FLOAT" property="smsdrin"/>
+        <result column="SmSdriE" jdbcType="FLOAT" property="smsdrie"/>
+        <result column="SmSdriS" jdbcType="FLOAT" property="smsdris"/>
+        <result column="SmGranule" jdbcType="FLOAT" property="smgranule"/>
+        <result column="SmGeometry" jdbcType="OTHER" property="smgeometry"/>
+        <result column="SmUserID" jdbcType="INTEGER" property="smuserid"/>
+        <result column="SmLibTileID" jdbcType="INTEGER" property="smlibtileid"/>
+        <result column="SmArea" jdbcType="FLOAT" property="smarea"/>
+        <result column="SmPerimeter" jdbcType="FLOAT" property="smperimeter"/>
+        <result column="OBJECTID_1" jdbcType="BIGINT" property="objectid1"/>
+        <result column="OBJECTID" jdbcType="BIGINT" property="objectid"/>
+        <result column="幢号" jdbcType="VARCHAR" property="幢号"/>
+        <result column="室号" jdbcType="VARCHAR" property="室号"/>
+        <result column="备注" jdbcType="VARCHAR" property="备注"/>
+        <result column="CG" jdbcType="BIGINT" property="cg"/>
+        <result column="QSGD" jdbcType="BIGINT" property="qsgd"/>
+        <result column="FWZL" jdbcType="VARCHAR" property="fwzl"/>
+        <result column="BDCDYH" jdbcType="VARCHAR" property="bdcdyh"/>
+        <result column="SHAPE_Leng" jdbcType="FLOAT" property="shapeLeng"/>
+        <result column="CS" jdbcType="BIGINT" property="cs"/>
+        <result column="TDYT" jdbcType="VARCHAR" property="tdyt"/>
+        <result column="Shape_Le_1" jdbcType="FLOAT" property="shapeLe1"/>
+        <result column="Shape_Area" jdbcType="FLOAT" property="shapeArea"/>
+        <result column="shapeLeng" jdbcType="FLOAT" property="shapeleng"/>
+        <result column="shapeLe1" jdbcType="FLOAT" property="shapele1"/>
+        <result column="shapeArea" jdbcType="FLOAT" property="shapearea"/>
+        <result column="objectid1" jdbcType="BIGINT" property="objectid1"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        SmID
+        , SmKey, SmSdriW, SmSdriN, SmSdriE, SmSdriS, SmGranule, SmGeometry, SmUserID,
+    SmLibTileID, SmArea, SmPerimeter, OBJECTID_1, OBJECTID, 幢号, 室号, 备注, CG, QSGD, FWZL, 
+    BDCDYH, SHAPE_Leng, CS, TDYT, Shape_Le_1, Shape_Area, shapeLeng, shapeLe1, shapeArea, 
+    objectid1
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from SMDTV_1
+        where SmID = #{smid,jdbcType=INTEGER}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select *
+        from smdtv_1
+        <where>
+            <if test="fwzl!=null and fwzl !=''">
+                and fwzl like concat ('%',#{fwzl},'%')
+            </if>
+            <if test="bdcdyh!=null and bdcdyh != ''">
+                and bdcdyh like concat ('%',#{bdcdyh},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from SMDTV_1
+        where SmID = #{smid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="SmID" keyProperty="smid" parameterType="com.ssm.domain.Smdtv1"
+            useGeneratedKeys="true">
+        insert into SMDTV_1 (SmKey, SmSdriW, SmSdriN,
+                             SmSdriE, SmSdriS, SmGranule,
+                             SmGeometry, SmUserID, SmLibTileID,
+                             SmArea, SmPerimeter, OBJECTID_1,
+                             OBJECTID, 幢号, 室号, 备注,
+                             CG, QSGD, FWZL, BDCDYH,
+                             SHAPE_Leng, CS, TDYT, Shape_Le_1,
+                             Shape_Area, shapeLeng, shapeLe1,
+                             shapeArea, objectid1)
+        values (#{smkey,jdbcType=INTEGER}, #{smsdriw,jdbcType=FLOAT}, #{smsdrin,jdbcType=FLOAT},
+                #{smsdrie,jdbcType=FLOAT}, #{smsdris,jdbcType=FLOAT}, #{smgranule,jdbcType=FLOAT},
+                #{smgeometry,jdbcType=OTHER}, #{smuserid,jdbcType=INTEGER}, #{smlibtileid,jdbcType=INTEGER},
+                #{smarea,jdbcType=FLOAT}, #{smperimeter,jdbcType=FLOAT}, #{objectid1,jdbcType=BIGINT},
+                #{objectid,jdbcType=BIGINT}, #{幢号,jdbcType=VARCHAR}, #{室号,jdbcType=VARCHAR}, #{备注,jdbcType=VARCHAR},
+                #{cg,jdbcType=BIGINT}, #{qsgd,jdbcType=BIGINT}, #{fwzl,jdbcType=VARCHAR}, #{bdcdyh,jdbcType=VARCHAR},
+                #{shapeLeng,jdbcType=FLOAT}, #{cs,jdbcType=BIGINT}, #{tdyt,jdbcType=VARCHAR},
+                #{shapeLe1,jdbcType=FLOAT},
+                #{shapeArea,jdbcType=FLOAT}, #{shapeleng,jdbcType=FLOAT}, #{shapele1,jdbcType=FLOAT},
+                #{shapearea,jdbcType=FLOAT}, #{objectid1,jdbcType=BIGINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="SmID" keyProperty="smid" parameterType="com.ssm.domain.Smdtv1"
+            useGeneratedKeys="true">
+        insert into SMDTV_1
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="smkey != null">
+                SmKey,
+            </if>
+            <if test="smsdriw != null">
+                SmSdriW,
+            </if>
+            <if test="smsdrin != null">
+                SmSdriN,
+            </if>
+            <if test="smsdrie != null">
+                SmSdriE,
+            </if>
+            <if test="smsdris != null">
+                SmSdriS,
+            </if>
+            <if test="smgranule != null">
+                SmGranule,
+            </if>
+            <if test="smgeometry != null">
+                SmGeometry,
+            </if>
+            <if test="smuserid != null">
+                SmUserID,
+            </if>
+            <if test="smlibtileid != null">
+                SmLibTileID,
+            </if>
+            <if test="smarea != null">
+                SmArea,
+            </if>
+            <if test="smperimeter != null">
+                SmPerimeter,
+            </if>
+            <if test="objectid1 != null">
+                OBJECTID_1,
+            </if>
+            <if test="objectid != null">
+                OBJECTID,
+            </if>
+            <if test="幢号 != null">
+                幢号,
+            </if>
+            <if test="室号 != null">
+                室号,
+            </if>
+            <if test="备注 != null">
+                备注,
+            </if>
+            <if test="cg != null">
+                CG,
+            </if>
+            <if test="qsgd != null">
+                QSGD,
+            </if>
+            <if test="fwzl != null">
+                FWZL,
+            </if>
+            <if test="bdcdyh != null">
+                BDCDYH,
+            </if>
+            <if test="shapeLeng != null">
+                SHAPE_Leng,
+            </if>
+            <if test="cs != null">
+                CS,
+            </if>
+            <if test="tdyt != null">
+                TDYT,
+            </if>
+            <if test="shapeLe1 != null">
+                Shape_Le_1,
+            </if>
+            <if test="shapeArea != null">
+                Shape_Area,
+            </if>
+            <if test="shapeleng != null">
+                shapeLeng,
+            </if>
+            <if test="shapele1 != null">
+                shapeLe1,
+            </if>
+            <if test="shapearea != null">
+                shapeArea,
+            </if>
+            <if test="objectid1 != null">
+                objectid1,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="smkey != null">
+                #{smkey,jdbcType=INTEGER},
+            </if>
+            <if test="smsdriw != null">
+                #{smsdriw,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrin != null">
+                #{smsdrin,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrie != null">
+                #{smsdrie,jdbcType=FLOAT},
+            </if>
+            <if test="smsdris != null">
+                #{smsdris,jdbcType=FLOAT},
+            </if>
+            <if test="smgranule != null">
+                #{smgranule,jdbcType=FLOAT},
+            </if>
+            <if test="smgeometry != null">
+                #{smgeometry,jdbcType=OTHER},
+            </if>
+            <if test="smuserid != null">
+                #{smuserid,jdbcType=INTEGER},
+            </if>
+            <if test="smlibtileid != null">
+                #{smlibtileid,jdbcType=INTEGER},
+            </if>
+            <if test="smarea != null">
+                #{smarea,jdbcType=FLOAT},
+            </if>
+            <if test="smperimeter != null">
+                #{smperimeter,jdbcType=FLOAT},
+            </if>
+            <if test="objectid1 != null">
+                #{objectid1,jdbcType=BIGINT},
+            </if>
+            <if test="objectid != null">
+                #{objectid,jdbcType=BIGINT},
+            </if>
+            <if test="幢号 != null">
+                #{幢号,jdbcType=VARCHAR},
+            </if>
+            <if test="室号 != null">
+                #{室号,jdbcType=VARCHAR},
+            </if>
+            <if test="备注 != null">
+                #{备注,jdbcType=VARCHAR},
+            </if>
+            <if test="cg != null">
+                #{cg,jdbcType=BIGINT},
+            </if>
+            <if test="qsgd != null">
+                #{qsgd,jdbcType=BIGINT},
+            </if>
+            <if test="fwzl != null">
+                #{fwzl,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcdyh != null">
+                #{bdcdyh,jdbcType=VARCHAR},
+            </if>
+            <if test="shapeLeng != null">
+                #{shapeLeng,jdbcType=FLOAT},
+            </if>
+            <if test="cs != null">
+                #{cs,jdbcType=BIGINT},
+            </if>
+            <if test="tdyt != null">
+                #{tdyt,jdbcType=VARCHAR},
+            </if>
+            <if test="shapeLe1 != null">
+                #{shapeLe1,jdbcType=FLOAT},
+            </if>
+            <if test="shapeArea != null">
+                #{shapeArea,jdbcType=FLOAT},
+            </if>
+            <if test="shapeleng != null">
+                #{shapeleng,jdbcType=FLOAT},
+            </if>
+            <if test="shapele1 != null">
+                #{shapele1,jdbcType=FLOAT},
+            </if>
+            <if test="shapearea != null">
+                #{shapearea,jdbcType=FLOAT},
+            </if>
+            <if test="objectid1 != null">
+                #{objectid1,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ssm.domain.Smdtv1">
+        update SMDTV_1
+        <set>
+            <if test="smkey != null">
+                SmKey = #{smkey,jdbcType=INTEGER},
+            </if>
+            <if test="smsdriw != null">
+                SmSdriW = #{smsdriw,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrin != null">
+                SmSdriN = #{smsdrin,jdbcType=FLOAT},
+            </if>
+            <if test="smsdrie != null">
+                SmSdriE = #{smsdrie,jdbcType=FLOAT},
+            </if>
+            <if test="smsdris != null">
+                SmSdriS = #{smsdris,jdbcType=FLOAT},
+            </if>
+            <if test="smgranule != null">
+                SmGranule = #{smgranule,jdbcType=FLOAT},
+            </if>
+            <if test="smgeometry != null">
+                SmGeometry = #{smgeometry,jdbcType=OTHER},
+            </if>
+            <if test="smuserid != null">
+                SmUserID = #{smuserid,jdbcType=INTEGER},
+            </if>
+            <if test="smlibtileid != null">
+                SmLibTileID = #{smlibtileid,jdbcType=INTEGER},
+            </if>
+            <if test="smarea != null">
+                SmArea = #{smarea,jdbcType=FLOAT},
+            </if>
+            <if test="smperimeter != null">
+                SmPerimeter = #{smperimeter,jdbcType=FLOAT},
+            </if>
+            <if test="objectid1 != null">
+                OBJECTID_1 = #{objectid1,jdbcType=BIGINT},
+            </if>
+            <if test="objectid != null">
+                OBJECTID = #{objectid,jdbcType=BIGINT},
+            </if>
+            <if test="幢号 != null">
+                幢号 = #{幢号,jdbcType=VARCHAR},
+            </if>
+            <if test="室号 != null">
+                室号 = #{室号,jdbcType=VARCHAR},
+            </if>
+            <if test="备注 != null">
+                备注 = #{备注,jdbcType=VARCHAR},
+            </if>
+            <if test="cg != null">
+                CG = #{cg,jdbcType=BIGINT},
+            </if>
+            <if test="qsgd != null">
+                QSGD = #{qsgd,jdbcType=BIGINT},
+            </if>
+            <if test="fwzl != null">
+                FWZL = #{fwzl,jdbcType=VARCHAR},
+            </if>
+            <if test="bdcdyh != null">
+                BDCDYH = #{bdcdyh,jdbcType=VARCHAR},
+            </if>
+            <if test="shapeLeng != null">
+                SHAPE_Leng = #{shapeLeng,jdbcType=FLOAT},
+            </if>
+            <if test="cs != null">
+                CS = #{cs,jdbcType=BIGINT},
+            </if>
+            <if test="tdyt != null">
+                TDYT = #{tdyt,jdbcType=VARCHAR},
+            </if>
+            <if test="shapeLe1 != null">
+                Shape_Le_1 = #{shapeLe1,jdbcType=FLOAT},
+            </if>
+            <if test="shapeArea != null">
+                Shape_Area = #{shapeArea,jdbcType=FLOAT},
+            </if>
+            <if test="shapeleng != null">
+                shapeLeng = #{shapeleng,jdbcType=FLOAT},
+            </if>
+            <if test="shapele1 != null">
+                shapeLe1 = #{shapele1,jdbcType=FLOAT},
+            </if>
+            <if test="shapearea != null">
+                shapeArea = #{shapearea,jdbcType=FLOAT},
+            </if>
+            <if test="objectid1 != null">
+                objectid1 = #{objectid1,jdbcType=BIGINT},
+            </if>
+        </set>
+        where SmID = #{smid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ssm.domain.Smdtv1">
+        update SMDTV_1
+        set SmKey       = #{smkey,jdbcType=INTEGER},
+            SmSdriW     = #{smsdriw,jdbcType=FLOAT},
+            SmSdriN     = #{smsdrin,jdbcType=FLOAT},
+            SmSdriE     = #{smsdrie,jdbcType=FLOAT},
+            SmSdriS     = #{smsdris,jdbcType=FLOAT},
+            SmGranule   = #{smgranule,jdbcType=FLOAT},
+            SmGeometry  = #{smgeometry,jdbcType=OTHER},
+            SmUserID    = #{smuserid,jdbcType=INTEGER},
+            SmLibTileID = #{smlibtileid,jdbcType=INTEGER},
+            SmArea      = #{smarea,jdbcType=FLOAT},
+            SmPerimeter = #{smperimeter,jdbcType=FLOAT},
+            OBJECTID_1  = #{objectid1,jdbcType=BIGINT},
+            OBJECTID    = #{objectid,jdbcType=BIGINT},
+            幢号          = #{幢号,jdbcType=VARCHAR},
+            室号          = #{室号,jdbcType=VARCHAR},
+            备注          = #{备注,jdbcType=VARCHAR},
+            CG          = #{cg,jdbcType=BIGINT},
+            QSGD        = #{qsgd,jdbcType=BIGINT},
+            FWZL        = #{fwzl,jdbcType=VARCHAR},
+            BDCDYH      = #{bdcdyh,jdbcType=VARCHAR},
+            SHAPE_Leng  = #{shapeLeng,jdbcType=FLOAT},
+            CS          = #{cs,jdbcType=BIGINT},
+            TDYT        = #{tdyt,jdbcType=VARCHAR},
+            Shape_Le_1  = #{shapeLe1,jdbcType=FLOAT},
+            Shape_Area  = #{shapeArea,jdbcType=FLOAT},
+            shapeLeng   = #{shapeleng,jdbcType=FLOAT},
+            shapeLe1    = #{shapele1,jdbcType=FLOAT},
+            shapeArea   = #{shapearea,jdbcType=FLOAT},
+            objectid1   = #{objectid1,jdbcType=BIGINT}
+        where SmID = #{smid,jdbcType=INTEGER}
+    </update>
+</mapper>
